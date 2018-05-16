@@ -1,0 +1,18 @@
+To set up new dev env:
+
+python3 -m venv .
+source ./venv/bin/activate
+pip install -r requirements.txt 
+
+
+Note: most commands are run within the top-level flashcards folder
+
+To run project locally:
+python manage.py runserver
+
+
+
+bringup log:
+django-admin startproject flashcards
+    This created the flashcards subdir
+
