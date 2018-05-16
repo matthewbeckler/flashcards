@@ -16,3 +16,30 @@ bringup log:
 django-admin startproject flashcards
     This created the flashcards subdir
 
+
+
+model notes:
+
+Card: A single flashcard. Normally present side A and user tries to remember side B.
+    SideA: string, or something fancier?
+    SideB: string, or something fancier?
+    Reversable: True if it makes sense to also present B to remember A. (language vocab would be reversable, ham radio questions would not be reversable)
+    Maybe support embedded images or auto-expandable image links for each side?
+    decks[]: list of decks this card is part of (auto-populated?)
+
+Deck: A collection of Cards
+    Title: string (i.e. "Eating and Drinking")
+    cards[]: list of cards that are in this deck. Probably support using the same card in multiple decks? Or is that a bad idea?
+    users[]: list of users that are working on this deck (auto-populated?)
+
+User: Someone who wants to learn things via flashcards
+    email: string
+    password: some sort of bcrypt hash (todo salt?)
+    decks[]: a list of decks they are working on
+
+UserCardStatus: Current status of a user's history with a card
+    user: foreign key with User table?
+    card: foreign key with Card table?
+    success: some sort of metric of how well they are doing with the card, drives the next time they need to practice the card, maybe some sort of log/exponential function f(score, right_or_wrong), maybe score is a float in (0,5) or int in (0, 100)
+    next_due: timestamp (UTC) of the next time the user needs to revisit this card
+    TODO maybe include last_timestamp and last_result to track the last time the user tried the card (and if it was a pass or fail)
