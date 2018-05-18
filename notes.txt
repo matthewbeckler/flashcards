@@ -1,24 +1,25 @@
 To set up new dev env:
-
-python3 -m venv .
+python3 -m venv ./venv
 source ./venv/bin/activate
 pip install -r requirements.txt 
 
+To resume working on this dev env:
+source ./venv/bin/activate
 
-Note: most commands are run within the top-level flashcards folder
+Note: most commands are run within the top-level flashcards folder (not the repo top-level)
 
 To run project locally:
 python manage.py runserver
 
 
+Three step guide to making model changes:
+# Change models.py
+# Run `python manage.py makemigrations` to create migrations for those changes
+# Run `python manage.py migrate` to apply those changes to the database
+Should commit migrations to the repo!
 
-bringup log:
-django-admin startproject flashcards
-    This created the flashcards subdir
 
-
-
-model notes:
+Flashcards app model notes:
 
 Card: A single flashcard. Normally present side A and user tries to remember side B.
     SideA: string, or something fancier?
