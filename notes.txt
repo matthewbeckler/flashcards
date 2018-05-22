@@ -44,3 +44,8 @@ UserCardStatus: Current status of a user's history with a card
     success: some sort of metric of how well they are doing with the card, drives the next time they need to practice the card, maybe some sort of log/exponential function f(score, right_or_wrong), maybe score is a float in (0,5) or int in (0, 100)
     next_due: timestamp (UTC) of the next time the user needs to revisit this card
     TODO maybe include last_timestamp and last_result to track the last time the user tried the card (and if it was a pass or fail)
+
+
+It might make more sense to track every user-card interaction, in case we want to update the training model later on.
+
+If a card is edited, we should probably wipe-out all interaction history with that card? Or at least give the editor that option (so they could decide that a big change should wipe history, but a small change could keep history).
