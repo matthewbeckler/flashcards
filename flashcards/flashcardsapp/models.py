@@ -38,3 +38,6 @@ class Interaction(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     timestamp = models.DateTimeField()
     success = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "%s, %s, %s" % ("USER", self.card, self.timestamp)
