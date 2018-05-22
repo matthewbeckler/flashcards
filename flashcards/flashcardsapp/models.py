@@ -31,3 +31,10 @@ class Card(models.Model):
     def was_updated_recently(self):
         return self.update_date >= (timezone.now() - datetime.timedelta(days=1))
 
+
+class Interaction(models.Model):
+    """ A record of an interaction of a user and a card. """
+    # TODO figure out how to do user stuff, for now assume one user
+    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField()
+    success = models.BooleanField(default=False)
